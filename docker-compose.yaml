@@ -1,0 +1,15 @@
+services:
+  reservations:
+    build: 
+      context: .
+      dockerfile: ./apps/reservations/Dockerfile
+      target: development
+    command: pnpm run start:dev reservations
+    container_name: reservations_container
+    ports:
+      - '3000:3000'
+    volumes:
+      - .:/usr/src/app
+
+  mongodb:
+    image: mongo
